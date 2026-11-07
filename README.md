@@ -1,1 +1,541 @@
-# Website-biodata
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Website biodata diri - Kenjiro Alonso Sientargo, siswa Sekolah Kalam Kudus Malang">
+  <title>Biodata Diri | Kenjiro Alonso Sientargo</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233368A0'/%3E%3C/svg%3E">
+
+  <!-- LIBRARY: Google Fonts, Bootstrap 5, Bootstrap Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- CSS KUSTOM -->
+  <style>
+:root {
+  --cream: #F2EFE7;
+  --mint: #C8DFDB;
+  --sky: #66A3BF;
+  --blue: #3368A0;
+  --ink: #16304a;
+  --radius: 1.5rem;
+  --shadow: 0 10px 30px rgba(51, 104, 160, .14);
+  --shadow-lg: 0 18px 44px rgba(51, 104, 160, .24);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 70px; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.01em; }
+a { color: var(--blue); text-decoration: none; transition: color .25s; }
+a:hover { color: var(--sky); }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+/* NAVBAR */
+.site-nav { padding: .9rem 0; background: rgba(242, 239, 231, .75); backdrop-filter: blur(12px); transition: all .35s var(--ease); }
+.site-nav.scrolled { padding: .45rem 0; background: rgba(242, 239, 231, .95); box-shadow: 0 6px 24px rgba(51, 104, 160, .15); }
+.navbar-brand { color: var(--blue); }
+.navbar-brand:hover { color: var(--sky); }
+.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler i { color: var(--blue); }
+.site-nav .nav-link { position: relative; color: var(--ink); font-weight: 500; font-size: .95rem; padding: .5rem .9rem !important; transition: color .25s; }
+.site-nav .nav-link::after { content: ""; position: absolute; left: 50%; bottom: 2px; width: 0; height: 2px; border-radius: 2px; background: var(--sky); transition: all .3s var(--ease); transform: translateX(-50%); }
+.site-nav .nav-link:hover, .site-nav .nav-link.active { color: var(--blue); }
+.site-nav .nav-link:hover::after, .site-nav .nav-link.active::after { width: 60%; }
+@media (max-width: 991.98px) {
+  .navbar-collapse { background: var(--cream); border-radius: 1rem; margin-top: .6rem; padding: .6rem; box-shadow: var(--shadow); }
+}
+
+/* TOMBOL */
+.btn { border-radius: 999px; font-weight: 500; padding: .65rem 1.5rem; transition: all .3s var(--ease); }
+.btn-main { color: var(--cream); background: linear-gradient(135deg, var(--blue), var(--sky)); border: 2px solid transparent; box-shadow: 0 8px 20px rgba(51, 104, 160, .3); }
+.btn-main:hover { color: #fff; transform: translateY(-3px); box-shadow: var(--shadow-lg); filter: brightness(1.08); }
+.btn-outline-main { color: var(--blue); border: 2px solid var(--blue); background: transparent; }
+.btn-outline-main:hover { color: var(--cream); background: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow); }
+.btn-light { background: var(--cream); color: var(--blue); border: 0; }
+.btn-light:hover { background: var(--mint); color: var(--blue); transform: translateY(-2px); }
+.btn-sm { padding: .4rem 1.1rem; }
+
+/* HERO */
+.hero { min-height: 100vh; position: relative; padding: 7rem 0 4rem;
+  background: radial-gradient(circle at 85% 15%, rgba(102, 163, 191, .35), transparent 45%), radial-gradient(circle at 10% 90%, rgba(200, 223, 219, .9), transparent 50%), linear-gradient(160deg, var(--cream) 40%, var(--mint) 100%);
+  overflow: hidden; }
+.hero-hello { color: var(--sky); font-weight: 500; margin-bottom: .3rem; }
+.hero-name { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; line-height: 1.1; color: var(--blue); }
+.hero-meta { font-size: 1.1rem; margin-bottom: .2rem; }
+.hero-meta i { color: var(--sky); }
+.hero-motto { margin: 1.5rem 0 0; padding-left: 1rem; border-left: 4px solid var(--sky); font-style: italic; font-size: 1.05rem; max-width: 30rem; }
+@media (max-width: 991.98px) { .hero-motto { margin-inline: auto; text-align: left; } }
+.avatar-wrap { position: relative; width: min(380px, 78vw); aspect-ratio: 1; margin: 0 auto; border-radius: 50%; padding: 10px; background: linear-gradient(135deg, var(--blue), var(--sky), var(--mint)); box-shadow: var(--shadow-lg); animation: float 5s ease-in-out infinite; }
+.avatar-wrap::before { content: ""; position: absolute; inset: -18px; border: 2px dashed var(--sky); border-radius: 50%; opacity: .6; animation: spin 30s linear infinite; }
+.avatar { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid var(--cream); }
+.scroll-down { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-size: 1.6rem; color: var(--blue); animation: bounce 1.8s infinite; }
+.hero-text > * { opacity: 0; animation: slideUp .8s var(--ease) forwards; }
+.hero-text > *:nth-child(1) { animation-delay: .1s; }
+.hero-text > *:nth-child(2) { animation-delay: .25s; }
+.hero-text > *:nth-child(3) { animation-delay: .4s; }
+.hero-text > *:nth-child(4) { animation-delay: .5s; }
+.hero-text > *:nth-child(5) { animation-delay: .65s; }
+.hero-text > *:nth-child(6) { animation-delay: .8s; }
+
+/* SECTION UMUM */
+.section { padding: 6rem 0; }
+.section-alt { background: linear-gradient(180deg, var(--mint) 0%, rgba(200, 223, 219, .35) 100%); }
+.section-head { text-align: center; margin-bottom: 3.5rem; }
+.section-head h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--blue); position: relative; display: inline-block; padding-bottom: .8rem; }
+.section-head h2::after { content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 60px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--sky)); }
+.section-head p { margin: .8rem 0 0; opacity: .8; }
+
+/* CARD */
+.card-soft { background: #fff; background: linear-gradient(160deg, #fff 60%, rgba(200, 223, 219, .35)); border: 1px solid rgba(102, 163, 191, .25); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.card-soft:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.card-blue { background: linear-gradient(145deg, var(--blue), var(--sky)); color: var(--cream); border-color: transparent; }
+.card-blue h3, .card-blue .card-title-sm { color: var(--cream); }
+.card-title-sm { font-size: 1.15rem; color: var(--blue); margin-bottom: 1.2rem; }
+.bio-list { margin: 0; }
+.bio-list > div { display: flex; gap: 1rem; padding: .75rem 0; border-bottom: 1px dashed rgba(102, 163, 191, .5); }
+.bio-list > div:last-child { border-bottom: 0; }
+.bio-list dt { flex: 0 0 11rem; font-weight: 500; color: var(--blue); }
+.bio-list dt i { margin-right: .6rem; color: var(--sky); transition: transform .3s; }
+.bio-list > div:hover dt i { transform: scale(1.3) rotate(-8deg); }
+.bio-list dd { margin: 0; }
+@media (max-width: 575.98px) { .bio-list > div { flex-direction: column; gap: 0; } .bio-list dt { flex: none; } }
+.counter-num { font-size: 2rem; font-weight: 700; line-height: 1.2; }
+.card-blue small { opacity: .9; }
+.icon-box { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 1.1rem; font-size: 1.6rem; margin-bottom: 1.2rem; color: var(--blue); background: var(--mint); transition: all .35s var(--ease); }
+.icon-box.sm { width: 46px; height: 46px; font-size: 1.2rem; margin: 0; flex: none; border-radius: .9rem; }
+.feature:hover .icon-box, .contact-list li:hover .icon-box { background: var(--blue); color: var(--cream); transform: rotate(-8deg) scale(1.1); }
+.feature h3 { font-size: 1.15rem; color: var(--blue); }
+.feature p { margin: 0; font-size: .95rem; }
+
+/* TIMELINE */
+.timeline { position: relative; max-width: 760px; margin: 0 auto; padding-left: 3.5rem; }
+.timeline::before { content: ""; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; border-radius: 4px; background: linear-gradient(var(--sky), var(--blue)); }
+.tl-item { position: relative; margin-bottom: 2rem; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: -3.5rem; top: 1.4rem; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--cream); color: var(--blue); font-size: 1.2rem; border: 4px solid var(--sky); box-shadow: var(--shadow); transition: transform .3s var(--ease); }
+.tl-item:hover .tl-dot { transform: scale(1.15); }
+.tl-now { background: var(--blue); color: var(--cream); border-color: var(--mint); }
+.tl-item h3 { font-size: 1.2rem; color: var(--blue); margin: .6rem 0 .4rem; }
+.tl-item p { margin-bottom: 1rem; font-size: .95rem; }
+.tl-item .card-soft:not(.card-blue) p:last-child { margin-bottom: 0; }
+.badge-soft { display: inline-block; padding: .25rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 500; background: var(--mint); color: var(--blue); }
+.badge-light { background: var(--cream); }
+.card-blue h3 { color: var(--cream) !important; }
+
+/* GALERI */
+.gallery-item { margin: 0; cursor: pointer; overflow: hidden; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(102, 163, 191, .25); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.gallery-item:hover, .gallery-item:focus-visible { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.gallery-img { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.gallery-item:hover .gallery-img img { transform: scale(1.12); }
+.gallery-img::after { content: "\F52A"; font-family: "bootstrap-icons"; font-size: 2rem; position: absolute; inset: 0; display: grid; place-items: center; color: var(--cream); background: rgba(51, 104, 160, .55); opacity: 0; transition: opacity .35s; }
+.gallery-item:hover .gallery-img::after { opacity: 1; }
+.gallery-item figcaption { padding: 1.1rem 1.4rem 1.3rem; }
+.gallery-item h4 { font-size: 1.05rem; color: var(--blue); margin-bottom: .2rem; }
+.gallery-item p { margin: 0; font-size: .9rem; opacity: .85; }
+.modal-soft { background: var(--cream); border-radius: var(--radius); border: 0; box-shadow: var(--shadow-lg); }
+.modal-title { color: var(--blue); }
+
+/* KONTAK */
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.contact-list li { display: flex; align-items: center; gap: 1rem; }
+.contact-list small { display: block; color: var(--sky); font-weight: 500; line-height: 1.2; }
+.contact-list a, .contact-list span { word-break: break-word; }
+.map-wrap { min-height: 360px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 4px solid #fff; background: var(--mint); }
+.map-wrap iframe { width: 100%; height: 100%; min-height: 360px; border: 0; }
+
+/* FOOTER */
+.site-footer { background: linear-gradient(160deg, var(--blue), #274f7c); color: var(--cream); padding: 3rem 0 2.2rem; }
+.site-footer a { color: var(--mint); }
+.site-footer a:hover { color: #fff; }
+.social { display: flex; justify-content: center; gap: .8rem; }
+.social a { width: 44px; height: 44px; display: grid; place-items: center; font-size: 1.15rem; border-radius: 50%; color: var(--cream); background: rgba(242, 239, 231, .12); transition: all .3s var(--ease); }
+.social a:hover { background: var(--mint); color: var(--blue); transform: translateY(-4px) rotate(8deg); }
+
+/* TOMBOL KE ATAS */
+.to-top { position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 1030; width: 48px; height: 48px; border: 0; border-radius: 50%; background: var(--blue); color: var(--cream); font-size: 1.2rem; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(20px); transition: all .35s var(--ease); }
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--sky); transform: translateY(-4px); }
+
+/* ANIMASI */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+.reveal.visible { opacity: 1; transform: none; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 10px); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01s !important; }
+  .reveal, .hero-text > * { opacity: 1; transform: none; }
+}
+@media (max-width: 575.98px) {
+  .section { padding: 4.5rem 0; }
+  .card-soft { padding: 1.5rem; }
+  .timeline { padding-left: 3rem; }
+  .tl-dot { left: -3rem; width: 42px; height: 42px; }
+  .timeline::before { left: 19px; }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR (sticky) ==================== -->
+  <nav class="navbar navbar-expand-lg fixed-top site-nav" id="navbar">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="#home"><i class="bi bi-person-badge-fill me-2"></i>Kenjiro Alonso Sientargo</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Buka menu">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pendidikan">Pendidikan</a></li>
+          <li class="nav-item"><a class="nav-link" href="#prestasi">Prestasi &amp; Pengalaman</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HOME ==================== -->
+    <section id="home" class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center g-5 flex-column-reverse flex-lg-row">
+          <div class="col-lg-7 text-center text-lg-start hero-text">
+            <p class="hero-hello"><i class="bi bi-stars me-1"></i>Halo, perkenalkan saya</p>
+            <!-- DATA: nama, kelas, sekolah, motto -->
+            <h1 class="hero-name">Kenjiro Alonso Sientargo</h1>
+            <p class="hero-meta"><i class="bi bi-mortarboard-fill me-2"></i>Kelas XI-D</p>
+            <p class="hero-meta"><i class="bi bi-building me-2"></i>Sekolah Kalam Kudus Malang</p>
+            <blockquote class="hero-motto">“Belajar hari ini, berkarya untuk esok hari.”</blockquote>
+            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mt-4">
+              <a href="#tentang" class="btn btn-main btn-lg"><i class="bi bi-person-lines-fill me-2"></i>Lihat Biodata</a>
+              <a href="#kontak" class="btn btn-outline-main btn-lg"><i class="bi bi-chat-dots-fill me-2"></i>Hubungi Saya</a>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="avatar-wrap">
+              <!-- GANTI src dengan foto kamu -->
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect width='600' height='600' fill='%2366A3BF'/%3E%3Ccircle cx='300' cy='235' r='105' fill='%23F2EFE7'/%3E%3Cpath d='M100 600c0-125 90-200 200-200s200 75 200 200z' fill='%233368A0'/%3E%3C/svg%3E" alt="Foto profil Kenjiro Alonso Sientargo" class="avatar">
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#tentang" class="scroll-down" aria-label="Gulir ke bawah"><i class="bi bi-chevron-double-down"></i></a>
+    </section>
+
+    <!-- ==================== TENTANG SAYA ==================== -->
+    <section id="tentang" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Tentang Saya</h2>
+          <p>Sedikit cerita tentang siapa saya.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-7 reveal">
+            <div class="card-soft h-100">
+              <h3 class="card-title-sm"><i class="bi bi-card-list me-2"></i>Biodata Lengkap</h3>
+              <!-- DATA: biodata -->
+              <dl class="bio-list">
+                <div><dt><i class="bi bi-person"></i>Nama</dt><dd>Kenjiro Alonso Sientargo</dd></div>
+                <div><dt><i class="bi bi-calendar-heart"></i>Tempat, Tgl Lahir</dt><dd>Malang, 12 Maret 2009</dd></div>
+                <div><dt><i class="bi bi-gender-ambiguous"></i>Jenis Kelamin</dt><dd>Laki-laki</dd></div>
+                <div><dt><i class="bi bi-geo-alt"></i>Alamat</dt><dd>Jln. Jendral Basuki Rachmat No. 78, Malang</dd></div>
+                <div><dt><i class="bi bi-heart"></i>Agama</dt><dd>Kristen</dd></div>
+                <div><dt><i class="bi bi-controller"></i>Hobi</dt><dd>Bermain game, membaca, dan coding</dd></div>
+                <div><dt><i class="bi bi-rocket-takeoff"></i>Cita-cita</dt><dd>Programmer</dd></div>
+              </dl>
+            </div>
+          </div>
+          <div class="col-lg-5 reveal" style="--d:.15s">
+            <div class="card-soft card-blue h-100">
+              <h3 class="card-title-sm"><i class="bi bi-chat-quote me-2"></i>Deskripsi Diri</h3>
+              <p>Saya seorang pelajar yang ramah dan suka belajar hal baru. Saya tertarik pada dunia teknologi dan bercita-cita menjadi seorang programmer.</p>
+              <div class="row text-center g-2 mt-3">
+                <div class="col-4"><div class="counter-num"><span class="counter" data-target="11">0</span></div><small>Kelas</small></div>
+                <div class="col-4"><div class="counter-num"><span class="counter" data-target="3">0</span></div><small>Hobi</small></div>
+                <div class="col-4"><div class="counter-num"><span class="counter" data-target="1">0</span></div><small>Lomba</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PENDIDIKAN ==================== -->
+    <section id="pendidikan" class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Pendidikan</h2>
+          <p>Perjalanan belajar saya dari waktu ke waktu.</p>
+        </div>
+        <div class="timeline">
+          <!-- DATA: SD -->
+          <div class="tl-item reveal">
+            <span class="tl-dot"><i class="bi bi-backpack2"></i></span>
+            <div class="card-soft">
+              <span class="badge-soft">SD &middot; 2015 &ndash; 2021</span>
+              <h3>Sekolah Kristen Kalam Kudus Malang</h3>
+              <p>Jenjang Sekolah Dasar. Belajar dasar membaca, menulis, berhitung, dan membangun kebiasaan belajar yang baik.</p>
+            </div>
+          </div>
+          <!-- DATA: SMP -->
+          <div class="tl-item reveal">
+            <span class="tl-dot"><i class="bi bi-book"></i></span>
+            <div class="card-soft">
+              <span class="badge-soft">SMP &middot; 2021 &ndash; 2024</span>
+              <h3>Sekolah Kristen Kalam Kudus Malang</h3>
+              <p>Jenjang Sekolah Menengah Pertama. Mulai mendalami berbagai mata pelajaran dan belajar lebih mandiri.</p>
+            </div>
+          </div>
+          <!-- DATA: SMA (sekolah sekarang) -->
+          <div class="tl-item reveal">
+            <span class="tl-dot tl-now"><i class="bi bi-mortarboard"></i></span>
+            <div class="card-soft card-blue">
+              <span class="badge-soft badge-light">SMA &middot; 2024 &ndash; Sekarang</span>
+              <h3>Sekolah Kristen Kalam Kudus Malang</h3>
+              <p>Jenjang Sekolah Menengah Atas (sekolah saat ini). Fokus belajar dengan baik dan mengembangkan minat di bidang teknologi.</p>
+              <a href="https://skkkmalang.sch.id/" target="_blank" rel="noopener" class="btn btn-light btn-sm rounded-pill"><i class="bi bi-box-arrow-up-right me-1"></i>Kunjungi Website Sekolah</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRESTASI & PENGALAMAN ==================== -->
+    <section id="prestasi" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Prestasi &amp; Pengalaman</h2>
+          <p>Pengalaman yang membuat saya terus belajar.</p>
+        </div>
+        <!-- DATA: pengalaman lomba (isi nama lomba jika ingin) -->
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-lg-7 reveal">
+            <div class="card-soft feature h-100">
+              <div class="icon-box"><i class="bi bi-flag"></i></div>
+              <span class="badge-soft mb-2">Belum menang, tetapi berharga</span>
+              <h3>Pengalaman Lomba</h3>
+              <p>Saya pernah mengikuti lomba dan belum berhasil meraih juara. Namun, pengalaman itu mengajarkan saya untuk berani mencoba, belajar dari kegagalan, dan terus berusaha menjadi lebih baik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GALERI ==================== -->
+    <section id="galeri" class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Galeri &amp; Portofolio</h2>
+          <p>Dokumentasi kegiatan dan karya saya. Klik gambar untuk memperbesar.</p>
+        </div>
+        <!-- DATA: ganti src dengan foto asli, serta judul dan deskripsi -->
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-4 reveal">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23C8DFDB'/%3E%3C/svg%3E" alt="Karya Seni"></div>
+              <figcaption><h4>Karya Seni</h4><p>Ilustrasi digital untuk pameran sekolah.</p></figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6 col-lg-4 reveal" style="--d:.1s">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%2366A3BF'/%3E%3C/svg%3E" alt="Kegiatan Sekolah"></div>
+              <figcaption><h4>Kegiatan Sekolah</h4><p>Hari Pendidikan bersama teman sekelas.</p></figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6 col-lg-4 reveal" style="--d:.2s">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%233368A0'/%3E%3C/svg%3E" alt="Pengalaman Lomba"></div>
+              <figcaption><h4>Pengalaman Lomba</h4><p>Dokumentasi saat mengikuti lomba.</p></figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6 col-lg-4 reveal">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23C8DFDB'/%3E%3C/svg%3E" alt="Kegiatan Kelas"></div>
+              <figcaption><h4>Kegiatan Kelas</h4><p>Momen kebersamaan bersama teman sekelas.</p></figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6 col-lg-4 reveal" style="--d:.1s">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%2366A3BF'/%3E%3C/svg%3E" alt="Kegiatan Sosial"></div>
+              <figcaption><h4>Kegiatan Sosial</h4><p>Bakti sosial bersama komunitas sekolah.</p></figcaption>
+            </figure>
+          </div>
+          <div class="col-sm-6 col-lg-4 reveal" style="--d:.2s">
+            <figure class="gallery-item" data-bs-toggle="modal" data-bs-target="#imgModal" tabindex="0" role="button">
+              <div class="gallery-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%233368A0'/%3E%3C/svg%3E" alt="Proyek Pribadi"></div>
+              <figcaption><h4>Proyek Pribadi</h4><p>Website portofolio sederhana buatan sendiri.</p></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KONTAK ==================== -->
+    <section id="kontak" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Kontak</h2>
+          <p>Mari terhubung dan berkenalan lebih jauh.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-5 reveal">
+            <div class="card-soft h-100">
+              <!-- DATA: ganti dengan data asli -->
+              <ul class="contact-list">
+                <li><span class="icon-box sm"><i class="bi bi-envelope"></i></span><div><small>Email</small><a href="mailto:kenjiro.alonso@gmail.com">kenjiro.alonso@gmail.com</a></div></li>
+                <li><span class="icon-box sm"><i class="bi bi-telephone"></i></span><div><small>Nomor HP</small><a href="tel:+6281234567890">+62 812-3456-7890</a></div></li>
+                <li><span class="icon-box sm"><i class="bi bi-geo-alt"></i></span><div><small>Alamat</small><span>Jln. Jendral Basuki Rachmat No. 78, Malang</span></div></li>
+                <li><span class="icon-box sm"><i class="bi bi-linkedin"></i></span><div><small>LinkedIn</small><a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/kenjiroalonso</a></div></li>
+                <li><span class="icon-box sm"><i class="bi bi-github"></i></span><div><small>GitHub</small><a href="https://github.com/" target="_blank" rel="noopener">github.com/kenjiroalonso</a></div></li>
+                <li><span class="icon-box sm"><i class="bi bi-instagram"></i></span><div><small>Instagram</small><a href="https://www.instagram.com/" target="_blank" rel="noopener">@kenjiroalonso</a></div></li>
+              </ul>
+              <div class="d-flex flex-wrap gap-2 mt-4">
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn btn-main"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+                <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-main"><i class="bi bi-github me-2"></i>GitHub</a>
+                <a href="https://skkkmalang.sch.id/" target="_blank" rel="noopener" class="btn btn-outline-main"><i class="bi bi-building me-2"></i>Website Sekolah</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 reveal" style="--d:.15s">
+            <div class="map-wrap h-100">
+              <iframe title="Lokasi Sekolah Kalam Kudus Malang" src="https://www.google.com/maps?q=Sekolah+Kalam+Kudus+Malang&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="social mb-3">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="mailto:kenjiro.alonso@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+      <p class="mb-1">&copy; 2026 <strong>Kenjiro Alonso Sientargo</strong>. Semua hak dilindungi.</p>
+      <p class="mb-0"><a href="https://skkkmalang.sch.id/" target="_blank" rel="noopener">Sekolah Kalam Kudus Malang</a></p>
+    </div>
+  </footer>
+
+  <!-- TOMBOL KE ATAS -->
+  <button id="toTop" class="to-top" aria-label="Kembali ke atas"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- MODAL PREVIEW GAMBAR GALERI -->
+  <div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-soft">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title" id="imgModalTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <img id="imgModalImg" src="" alt="" class="img-fluid rounded-4 w-100">
+          <p id="imgModalDesc" class="mt-3 mb-0"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar   = document.getElementById('navbar');
+  const toTopBtn = document.getElementById('toTop');
+  const navLinks = document.querySelectorAll('.site-nav .nav-link');
+  const menuEl   = document.getElementById('menu');
+
+  // 1. Navbar berubah & tombol "ke atas" saat scroll
+  const onScroll = () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    toTopBtn.classList.toggle('show', y > 500);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // 2. Tutup menu mobile setelah link diklik
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuEl.classList.contains('show')) {
+        bootstrap.Collapse.getOrCreateInstance(menuEl).hide();
+      }
+    });
+  });
+
+  // 3. Highlight menu aktif (scroll spy)
+  const sections = document.querySelectorAll('main section[id]');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  // 4. Animasi muncul saat discroll
+  const reveal = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
+
+  // 5. Counter angka
+  const animateCounter = el => {
+    const target = +el.dataset.target;
+    const duration = 1500;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
+
+  // 6. Galeri: isi modal sesuai gambar yang diklik
+  const modalImg   = document.getElementById('imgModalImg');
+  const modalTitle = document.getElementById('imgModalTitle');
+  const modalDesc  = document.getElementById('imgModalDesc');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const fill = () => {
+      const img = item.querySelector('img');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalTitle.textContent = item.querySelector('h4').textContent;
+      modalDesc.textContent  = item.querySelector('p').textContent;
+    };
+    item.addEventListener('click', fill);
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fill(); item.click(); }
+    });
+  });
+});
+  </script>
+</body>
+</html>
